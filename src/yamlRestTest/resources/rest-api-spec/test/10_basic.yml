@@ -5,4 +5,4 @@
         h: component
 
   - match:
-      $body: /^api\n$/
+      $body: /^opensearch-api\n$/

@@ -6,7 +6,7 @@ apply plugin: 'opensearch.opensearchplugin'
 apply plugin: 'opensearch.yaml-rest-test'
 apply plugin: 'opensearch.pluginzip'
 
-def pluginName = 'api'
+def pluginName = 'opensearch-api'
 def pluginDescription = 'OpenSearch API plugin.'
 def projectPath = 'org.opensearch'
 def pathToPlugin = 'api'

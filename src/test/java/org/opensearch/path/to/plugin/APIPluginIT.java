@@ -38,6 +38,14 @@ public class APIPluginIT extends OpenSearchIntegTestCase {
         String body = EntityUtils.toString(response.getEntity(), StandardCharsets.UTF_8);
 
         logger.info("response body: {}", body);
-        assertThat(body, containsString("api"));
+        assertTrue(body.contains("api"));
+    }
+
+    public void testPluginGetAPI() throws IOException, ParseException {
+        Response response = createRestClient().performRequest(new Request("GET", "/_plugins/api"));
+        String body = EntityUtils.toString(response.getEntity(), StandardCharsets.UTF_8);
+
+        logger.info("response body: {}", body);
+        assertEquals(body, "API SPEC\n");
     }
 }
