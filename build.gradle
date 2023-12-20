@@ -6,12 +6,12 @@ apply plugin: 'opensearch.opensearchplugin'
 apply plugin: 'opensearch.yaml-rest-test'
 apply plugin: 'opensearch.pluginzip'
 
-def pluginName = 'rename'
-def pluginDescription = 'Custom plugin'
+def pluginName = 'api'
+def pluginDescription = 'OpenSearch API plugin.'
 def projectPath = 'org.opensearch'
-def pathToPlugin = 'path.to.plugin'
-def pluginClassName = 'RenamePlugin'
-group = "RenameGroup"
+def pathToPlugin = 'api'
+def pluginClassName = 'APIPlugin'
+group = "APIPluginGroup"
 
 tasks.register("preparePluginPathDirs") {
     mustRunAfter clean
@@ -38,7 +38,7 @@ publishing {
               developers {
                 developer {
                   name = "OpenSearch"
-                  url = "https://github.com/opensearch-project/opensearch-plugin-template-java"
+                  url = "https://github.com/dblock/opensearch-api"
                 }
               }
             }
