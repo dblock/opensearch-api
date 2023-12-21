@@ -2,5 +2,5 @@
   - do:
       api: {}
 
-  - match:
-      $body: "API SPEC\n"
+  - match: { version.distribution: "opensearch" }
+  - match: { version.number: /.*-SNAPSHOT/ }

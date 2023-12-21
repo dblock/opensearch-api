@@ -10,9 +10,15 @@ package org.opensearch.api;
 import com.carrotsearch.randomizedtesting.annotations.ThreadLeakScope;
 import org.apache.hc.core5.http.ParseException;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
+import org.opensearch.Version;
+import org.opensearch.action.search.SearchResponse;
 import org.opensearch.api.APIPlugin;
+import org.opensearch.api.action.api.APIResponse;
 import org.opensearch.client.Request;
 import org.opensearch.client.Response;
+import org.opensearch.common.xcontent.json.JsonXContent;
+import org.opensearch.core.common.io.stream.StreamInput;
+import org.opensearch.core.xcontent.MediaTypeRegistry;
 import org.opensearch.plugins.Plugin;
 import org.opensearch.test.OpenSearchIntegTestCase;
 
@@ -44,8 +50,12 @@ public class APIPluginIT extends OpenSearchIntegTestCase {
     public void testPluginGetAPI() throws IOException, ParseException {
         Response response = createRestClient().performRequest(new Request("GET", "/_plugins/api"));
         String body = EntityUtils.toString(response.getEntity(), StandardCharsets.UTF_8);
-
         logger.info("response body: {}", body);
-        assertEquals(body, "API SPEC\n");
+
+        APIResponse apiResponse = APIResponse.fromXContent(
+            createParser(JsonXContent.jsonXContent, response.getEntity().getContent())
+        );
+
+        assertEquals(apiResponse.getVersion(), Version.CURRENT);
     }
 }
