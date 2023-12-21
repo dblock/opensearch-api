@@ -1,0 +1,6 @@
+"Test that the plugin returns an API spec":
+  - do:
+      api: {}
+
+  - match:
+      $body: "API SPEC\n"
