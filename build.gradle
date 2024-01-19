@@ -14,7 +14,7 @@ def pluginClassName = 'APIPlugin'
 
 buildscript {
     ext {
-        opensearch_version = System.getProperty("opensearch.version", "3.0.0-SNAPSHOT")
+        opensearch_version = System.getProperty("opensearch.version", "2.12.0-SNAPSHOT")
         isSnapshot = "true" == System.getProperty("build.snapshot", "true")
     }
 

@@ -12,7 +12,7 @@ Build a distribution.
 ./gradlew assemble
 ```
 
-This produces `./build/distributions/opensearch-api-3.0.0.0-SNAPSHOT.zip`.
+This produces `./build/distributions/opensearch-api-2.12.0.0-SNAPSHOT.zip`.
 
 ### Install
 
@@ -21,7 +21,7 @@ Check out OpenSearch code, run it once with `./gradlew run`.
 Install the plugin, you may need to adjust `darwin-arm64-tar` below to your platform, and use the location of your plugin zip (mine is `~/source/opensearch-project/opensearch-api/dblock-opensearch-api`).
 
 ```sh
-$ ./distribution/archives/darwin-arm64-tar/build/install/opensearch-3.0.0-SNAPSHOT/bin/opensearch-plugin install file:///Users/dblock/source/opensearch-project/opensearch-api/dblock-opensearch-api/build/distributions/opensearch-api-3.0.0.0-SNAPSHOT.zip
+$ ./distribution/archives/darwin-arm64-tar/build/install/opensearch-2.12.0-SNAPSHOT/bin/opensearch-plugin install file:///Users/dblock/source/opensearch-project/opensearch-api/dblock-opensearch-api/build/distributions/opensearch-api-2.12.0.0-SNAPSHOT.zip
 
 -> Installed opensearch-api with folder name opensearch-api
 ```
@@ -46,7 +46,7 @@ Returns an OpenAPI spec.
   "info": {
     "title": "opensearch",
     "description": "The OpenSearch Project: https://opensearch.org/",
-    "version": "3.0.0-SNAPSHOT"
+    "version": "2.12.0-SNAPSHOT"
   },
   ...
 }
@@ -55,7 +55,7 @@ Returns an OpenAPI spec.
 ### Uninstall
 
 ```sh
-./distribution/archives/darwin-arm64-tar/build/install/opensearch-3.0.0-SNAPSHOT/bin/opensearch-plugin remove opensearch-api
+./distribution/archives/darwin-arm64-tar/build/install/opensearch-2.12.0-SNAPSHOT/bin/opensearch-plugin remove opensearch-api
 
 -> removing [opensearch-api]...
 ```

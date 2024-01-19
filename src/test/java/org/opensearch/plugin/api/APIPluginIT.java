@@ -9,8 +9,7 @@ package org.opensearch.plugin.api;
 
 import com.carrotsearch.randomizedtesting.annotations.ThreadLeakScope;
 
-import org.apache.hc.core5.http.ParseException;
-import org.apache.hc.core5.http.io.entity.EntityUtils;
+import org.apache.http.util.EntityUtils;
 import org.opensearch.client.Request;
 import org.opensearch.client.Response;
 import org.opensearch.plugins.Plugin;
@@ -30,15 +29,15 @@ public class APIPluginIT extends OpenSearchIntegTestCase {
         return Collections.singletonList(APIPlugin.class);
     }
 
-    public void testPluginInstalled() throws IOException, ParseException {
+    public void testPluginInstalled() throws IOException {
         Response response = getRestClient().performRequest(new Request("GET", "/_cat/plugins"));
         String body = EntityUtils.toString(response.getEntity(), StandardCharsets.UTF_8);
 
-        logger.info("response body: {}", body.toString());
+        logger.info("response body: {}", body);
         assertTrue(body.contains("api"));
     }
 
-    public void testPluginGetAPI() throws IOException, ParseException {
+    public void testPluginGetAPI() throws IOException {
         Response response = getRestClient().performRequest(new Request("GET", "/_plugins/api"));
         String body = EntityUtils.toString(response.getEntity(), StandardCharsets.UTF_8);
         logger.info("response body: {}", body);
