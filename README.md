@@ -1,3 +1,5 @@
+[![Build and Test Plugin](https://github.com/dblock/opensearch-api/actions/workflows/test.yml/badge.svg)](https://github.com/dblock/opensearch-api/actions/workflows/test.yml)
+
 ## OpenSearch API Plugin
 
 A plugin that returns the OpenSearch API in the OpenAPI format.
