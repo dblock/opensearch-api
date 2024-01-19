@@ -5,10 +5,13 @@
  * this file be licensed under the Apache-2.0 license or a
  * compatible open source license.
  */
-package org.opensearch.api;
+package org.opensearch.plugin.api;
 
 import org.opensearch.test.OpenSearchTestCase;
 
 public class APIPluginTests extends OpenSearchTestCase {
-    // Add unit tests for your plugin
+    public void testConstructor() {
+        APIPlugin plugin = new APIPlugin();
+        assertNotNull(plugin);
+    }
 }

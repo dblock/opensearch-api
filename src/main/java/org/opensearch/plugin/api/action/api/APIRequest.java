@@ -6,7 +6,7 @@
  * compatible open source license.
  */
 
-package org.opensearch.api.action.api;
+package org.opensearch.plugin.api.action.api;
 
 import org.opensearch.action.ActionRequest;
 import org.opensearch.action.ActionRequestValidationException;
@@ -16,8 +16,16 @@ import java.io.IOException;
 
 public class APIRequest extends ActionRequest {
 
+    /**
+     *
+     */
     public APIRequest() {}
 
+    /**
+     *
+     * @param in
+     * @throws IOException
+     */
     APIRequest(StreamInput in) throws IOException {
         super(in);
     }

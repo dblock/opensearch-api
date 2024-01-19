@@ -9,7 +9,7 @@ apply plugin: 'opensearch.pluginzip'
 def pluginName = 'opensearch-api'
 def pluginDescription = 'OpenSearch API plugin.'
 def projectPath = 'org.opensearch'
-def pathToPlugin = 'api'
+def pathToPlugin = 'plugin.api'
 def pluginClassName = 'APIPlugin'
 group = "APIPluginGroup"
 

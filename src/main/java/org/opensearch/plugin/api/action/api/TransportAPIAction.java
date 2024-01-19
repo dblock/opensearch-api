@@ -6,7 +6,7 @@
  * compatible open source license.
  */
 
-package org.opensearch.api.action.api;
+package org.opensearch.plugin.api.action.api;
 
 import org.opensearch.Build;
 import org.opensearch.Version;
@@ -21,18 +21,12 @@ import org.opensearch.transport.TransportService;
 public class TransportAPIAction extends HandledTransportAction<APIRequest, APIResponse> {
 
     @Inject
-    public TransportAPIAction(
-        Settings settings,
-        TransportService transportService,
-        ActionFilters actionFilters
-    ) {
+    public TransportAPIAction(Settings settings, TransportService transportService, ActionFilters actionFilters) {
         super(APIAction.NAME, transportService, actionFilters, APIRequest::new);
     }
 
     @Override
     protected void doExecute(Task task, APIRequest request, ActionListener<APIResponse> listener) {
-        listener.onResponse(
-            new APIResponse(Version.CURRENT, Build.CURRENT)
-        );
+        listener.onResponse(new APIResponse(Version.CURRENT, Build.CURRENT));
     }
 }

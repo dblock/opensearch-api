@@ -6,7 +6,7 @@
  * compatible open source license.
  */
 
-package org.opensearch.api.action.api;
+package org.opensearch.plugin.api.action.api;
 
 import org.opensearch.action.ActionRequestBuilder;
 import org.opensearch.client.OpenSearchClient;
