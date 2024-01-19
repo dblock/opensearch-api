@@ -26,7 +26,7 @@ $ ./distribution/archives/darwin-arm64-tar/build/install/opensearch-3.0.0-SNAPSH
 -> Installed opensearch-api with folder name opensearch-api
 ```
 
-When you run OpenSeaerch with `./gradlew run` you should see the plugin loaded in the logs.
+When you run OpenSearch with `./gradlew run` you should see the plugin loaded in the logs.
 
 ```
 [2023-09-27T08:35:48,627][INFO ][o.o.p.PluginsService] [runTask-0] loaded plugin [opensearch-api]
