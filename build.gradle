@@ -11,7 +11,8 @@ def pluginDescription = 'OpenSearch API plugin.'
 def projectPath = 'org.opensearch'
 def pathToPlugin = 'plugin.api'
 def pluginClassName = 'APIPlugin'
-group = "APIPluginGroup"
+
+group = "org.dblock"
 
 tasks.register("preparePluginPathDirs") {
     mustRunAfter clean
@@ -37,8 +38,9 @@ publishing {
               }
               developers {
                 developer {
-                  name = "OpenSearch"
-                  url = "https://github.com/dblock/opensearch-api"
+                  id = 'dblock'
+                  name = "Daniel Doubrovkine (dB.)"
+                  url = "https://code.dblock.org"
                 }
               }
             }
@@ -66,6 +68,7 @@ javadoc.enabled = false
 buildscript {
     ext {
         opensearch_version = System.getProperty("opensearch.version", "3.0.0-SNAPSHOT")
+        isSnapshot = "true" == System.getProperty("build.snapshot", "true")
     }
 
     repositories {
@@ -78,6 +81,11 @@ buildscript {
     dependencies {
         classpath "org.opensearch.gradle:build-tools:${opensearch_version}"
     }
+}
+
+version = opensearch_version - "-SNAPSHOT" + ".0"
+if (isSnapshot) {
+    version += "-SNAPSHOT"
 }
 
 repositories {
