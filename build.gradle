@@ -12,7 +12,40 @@ def projectPath = 'org.opensearch'
 def pathToPlugin = 'plugin.api'
 def pluginClassName = 'APIPlugin'
 
-group = "org.dblock"
+buildscript {
+    ext {
+        opensearch_version = System.getProperty("opensearch.version", "3.0.0-SNAPSHOT")
+        isSnapshot = "true" == System.getProperty("build.snapshot", "true")
+    }
+
+    apply from: 'repositories.gradle'
+
+    repositories {
+        mavenLocal()
+        maven { url "https://aws.oss.sonatype.org/content/repositories/snapshots" }
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+
+    dependencies {
+        classpath "org.opensearch.gradle:build-tools:${opensearch_version}"
+    }
+}
+
+allprojects {
+    group = "org.dblock"
+
+    version = opensearch_version - "-SNAPSHOT" + ".0"
+
+    if (isSnapshot) {
+        version += "-SNAPSHOT"
+    }
+
+    plugins.withId('java') {
+        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_11
+    }
+}
 
 tasks.register("preparePluginPathDirs") {
     mustRunAfter clean
@@ -64,36 +97,6 @@ validateNebulaPom.enabled = false
 
 // Don't care about documentation
 javadoc.enabled = false
-
-buildscript {
-    ext {
-        opensearch_version = System.getProperty("opensearch.version", "3.0.0-SNAPSHOT")
-        isSnapshot = "true" == System.getProperty("build.snapshot", "true")
-    }
-
-    repositories {
-        mavenLocal()
-        maven { url "https://aws.oss.sonatype.org/content/repositories/snapshots" }
-        mavenCentral()
-        maven { url "https://plugins.gradle.org/m2/" }
-    }
-
-    dependencies {
-        classpath "org.opensearch.gradle:build-tools:${opensearch_version}"
-    }
-}
-
-version = opensearch_version - "-SNAPSHOT" + ".0"
-if (isSnapshot) {
-    version += "-SNAPSHOT"
-}
-
-repositories {
-    mavenLocal()
-    maven { url "https://aws.oss.sonatype.org/content/repositories/snapshots" }
-    mavenCentral()
-    maven { url "https://plugins.gradle.org/m2/" }
-}
 
 test {
     include '**/*Tests.class'

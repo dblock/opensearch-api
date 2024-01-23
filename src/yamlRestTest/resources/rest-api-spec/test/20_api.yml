@@ -3,7 +3,7 @@
       api: {}
 
   - match: { info.title: "opensearch" }
-  - match: { info.version: /.*-SNAPSHOT/ }
+  - match: { info.version: /\d*\.\d*\.\d*.*/ }
   - match: { info.description: "The OpenSearch Project: https://opensearch.org/" }
 
   - match: { paths./_plugins/api.get: {} }
